@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<settings>
+    <!--    <proxies>-->
+    <!--        <proxy>-->
+    <!--            <id>intel-proxy</id>-->
+    <!--            <active>true</active>-->
+    <!--            <protocol>http</protocol>-->
+    <!--            <host>child-prc.intel.com</host>-->
+    <!--            <port>913</port>-->
+    <!--            &lt;!&ndash; host>proxy-shz.intel.com</host> <port>911</port></host &ndash;&gt;-->
+    <!--            <nonProxyHosts>*.intel.com|127.0.0.1|www.google.com|*.example.com</nonProxyHosts>-->
+    <!--        </proxy>-->
+    <!--    </proxies>-->
+
+    <!-- pluginGroups
+     | This is a list of additional group identifiers that will be searched when resolving plugins by their prefix, i.e.
+     | when invoking a command line like "mvn prefix:goal". Maven will automatically add the group identifiers
+     | "org.apache.maven.plugins" and "org.codehaus.mojo" if these are not already contained in the list.
+     |-->
+    <pluginGroups>
+        <!-- pluginGroup
+         | Specifies a further group identifier to use for plugin lookup.
+        <pluginGroup>org.mortbay.jetty</pluginGroup>
+        <pluginGroup>com.your.plugins</pluginGroup>
+        -->
+    </pluginGroups>
+
+    <mirrors>
+        <!--
+        <mirror>
+          <id>nexus</id>
+          <mirrorOf>*</mirrorOf>
+          <url>http://uk.maven.org/maven2/</url>
+        </mirror>
+        -->
+
+        <mirror>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>maven.net.cn</id>
+            <name>oneof the central mirrors in china</name>
+            <url>http://maven.net.cn/content/groups/public/</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>ali-spring</id>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <mirrorOf>spring</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>nexus-public-snapshots</id>
+            <mirrorOf>public-snapshots</mirrorOf>
+            <url>https://maven.aliyun.com/repository/apache-snapshots</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+        <profile>
+            <!--this profile will allow snapshots to be searched when activated-->
+            <id>public-snapshots</id>
+            <repositories>
+                <repository>
+                    <id>public-snapshots</id>
+                    <url>http://public-snapshots</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>public-snapshots</id>
+                    <url>http://public-snapshots</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+        <profile>
+            <!--this profile will allow snapshots to be searched when activated-->
+            <id>spring</id>
+            <repositories>
+                <repository>
+                    <id>spring</id>
+                    <url>http://spring</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>spring</id>
+                    <url>http://spring</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>development</activeProfile>
+        <activeProfile>spring</activeProfile>
+        <activeProfile>public-snapshots</activeProfile>
+    </activeProfiles>
+
+
+</settings>
